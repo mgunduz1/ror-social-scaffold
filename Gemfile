@@ -48,7 +48,6 @@ group :test do
   gem 'rspec'
 end
 
-
 group :development, :test do
   gem 'rspec-rails', '~> 4.1.0'
 end
