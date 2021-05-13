@@ -15,15 +15,15 @@
     <% @pending.each do |p| %>
     <ul>
         <% @new = User.find(p.user_id)%>
-        <li><%= pending_name(@user,@new) %>
-            <% end %>
+        <li><%= pending_name(@user,@new) %><%= accept_btn(@new,@user)%><%=decline_btn(@new,@user)%></li>
+        <% end %>
 
-            <div>
-                <h3>Friends:</h3>
-                <% @user.friends.each do |friend|%>
-                <ul>
-                    <li><%= friend.name%><%= remove_friend(friend)%></li>
-                </ul>
-                <%end%>
-            </div>
+        <div>
+            <h3>Friends:</h3>
+            <% @user.friends.each do |friend|%>
+            <ul>
+                <li><%= friend.name%><%= remove_friend(friend)%></li>
+            </ul>
+            <%end%>
+        </div>
 </div>

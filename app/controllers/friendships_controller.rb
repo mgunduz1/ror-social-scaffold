@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
     def create
         @user = User.find(params[:format])
         @friendship = current_user.friendships.create(friend_id: params[:format])
-        @friendship.save
+        flash[:notice] = @friendship.save ? 'Friendship request sent' : 'Fail. Try Again.'
         redirect_back(fallback_location: root_path)
       end
     
@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
     
       def destroy
         @friendship = Friendship.find(params[:id])
-        @friendship.destroy
+        flash[:alert] = @friendship.destroy ? 'Deleted request successfully' : 'Fail. Try again.'
         redirect_back(fallback_location: root_path)
       end
   end
