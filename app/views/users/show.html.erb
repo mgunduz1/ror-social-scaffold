@@ -10,15 +10,20 @@
     </article>
 </section>
 
-<div class="pending-con">
+<div>
+    <h3>Friend requests: </h3>
+    <% @pending.each do |p| %>
+    <ul>
+        <% @new = User.find(p.user_id)%>
+        <li><%= pending_name(@user,@new) %>
+            <% end %>
 
-
-    <div>
-        <h3>Friends:</h3>
-        <% @user.friends.each do |friend|%>
-        <ul>
-            <li><%= friend.name%><%= remove_friend(friend)%></li>
-        </ul>
-        <%end%>
-    </div>
+            <div>
+                <h3>Friends:</h3>
+                <% @user.friends.each do |friend|%>
+                <ul>
+                    <li><%= friend.name%><%= remove_friend(friend)%></li>
+                </ul>
+                <%end%>
+            </div>
 </div>
