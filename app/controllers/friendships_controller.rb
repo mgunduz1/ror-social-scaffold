@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.confirmed = true
 
-    flash[:notice] = @friendship.save ? "Congrats you got a new friend" : 'Fail. Try Again.'
+    flash[:notice] = @friendship.save ? 'Congrats you got a new friend' : 'Fail. Try Again.'
     redirect_back(fallback_location: root_path)
   end
 

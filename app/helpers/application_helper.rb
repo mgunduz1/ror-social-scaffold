@@ -16,7 +16,7 @@ module ApplicationHelper
     end
   end
 
-  def addOrCancelFriendRequest(user)
+  def add_or_cancel_friend_request(user)
     @check = Friendship.where(user_id: user.id).where(friend_id: current_user.id).first
     return unless user.id != current_user.id && !@friends && !@check && !user.friends.include?(current_user)
 
@@ -30,11 +30,11 @@ module ApplicationHelper
   end
 
   def remove_friend(user)
-    friend = Friendship.where(user_id: [current_user.id,user.id]).where(friend_id: [current_user.id,user.id]).where(confirmed: true).first
+    friend = Friendship.where(user_id: [current_user.id,
+                                        user.id]).where(friend_id: [current_user.id,
+                                                                    user.id]).where(confirmed: true).first
 
-    if friend
-    link_to('Unfriend', friendship_path(friend), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete)
-    end
+    link_to('Unfriend', friendship_path(friend), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete) if friend
   end
 
   def pending_name(user, name)
