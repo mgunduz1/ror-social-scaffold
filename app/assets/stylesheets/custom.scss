@@ -12,9 +12,10 @@ $divider-color: #bdbdbd;
   box-sizing: border-box;
   outline: none;
 
-  ol, ul {
+  ol,
+  ul {
     padding-left: 1rem;
-}
+  }
 }
 
 body {
