@@ -1,31 +1,41 @@
-<section class="user-section">
-    <h2><%= "Name: #{@user.name}" %></h2>
-    <%= addOrCancelFriendRequest(@user) %>
+<div class='container-fluid'>
+    <div class='row mx-5 justify-content-center'>
+        <div class='col-7 d-flex flex-column'>
+            <section class="user-section w-100">
+                <div class='row d-flex justify-content-center'>
+                    <h2><%= "Name: #{@user.name}" %></h2>
+                    <%= addOrCancelFriendRequest(@user) %>
 
-    <article class="timeline">
-        <h3>Recent posts:</h3>
-        <ul class="posts">
-            <%= render @posts %>
-        </ul>
-    </article>
-</section>
+                </div>
+                <div class='row col-12 d-flex flex-column flex-fill'>
+                    <article class="timeline">
+                        <h3>Recent posts:</h3>
+                        <ul class="posts">
+                            <%= render @posts %>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div class="col-4 d-flex flex-column">
+            <div class='mb-3'>
+                <div>
+                    <h5>Friend requests: </h5>
+                    <% @pending.each do |p| %>
+                    <ul>
+                        <% @new = User.find(p.user_id)%>
+                        <li><%= pending_name(@user,@new) %><%= accept_button(@new,@user)%><%=decline_button(@new,@user)%></li>
+                    </ul>
+                    <% end %>
+                </div>
+            </div>
+            <h5>Friends:</h5>
+            <ul class="users-list">
+                <% @user.friends.each do |friend| %>
+                <li><%= friend.name %><%= remove_friend(friend)%></li>
+                <% end %>
+            </ul>
 
-<div>
-    <h3>Friend requests: </h3>
-    <% @pending.each do |p| %>
-    <ul>
-        <% @new = User.find(p.user_id)%>
-        <li><%= pending_name(@user,@new) %><%= accept_button(@new,@user)%><%=decline_button(@new,@user)%></li>
-    </ul>
-    <% end %>
-
-    <div>
-        <h3>Friends:</h3>
-        <% @user.friends.each do |friend|%>
-        <ul>
-
-            <li><%= friend.name%><%= remove_friend(friend)%></li>
-        </ul>
-        <%end%>
+        </div>
     </div>
 </div>

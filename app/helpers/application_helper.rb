@@ -30,11 +30,11 @@ module ApplicationHelper
   end
 
   def remove_friend(user)
-    friend = Friendship.where(user_id: [current_user.id,
-                                        user.id]).where(friend_id: [current_user.id,
-                                                                    user.id]).where(confirmed: true).first
+    friend = Friendship.where(user_id: [current_user.id,user.id]).where(friend_id: [current_user.id,user.id]).where(confirmed: true).first
 
+    if friend
     link_to('Unfriend', friendship_path(friend), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete)
+    end
   end
 
   def pending_name(user, name)

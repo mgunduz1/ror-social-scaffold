@@ -9,13 +9,14 @@ class FriendshipsController < ApplicationController
   def update
     @friendship = Friendship.find(params[:id])
     @friendship.confirmed = true
-    @friendship.save
+
+    flash[:notice] = @friendship.save ? "Congrats you got a new friend" : 'Fail. Try Again.'
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    flash[:alert] = @friendship.destroy ? 'Deleted request successfully' : 'Fail. Try again.'
+    flash[:alert] = @friendship.destroy ? 'Deleted successfully' : 'Fail. Try again.'
     redirect_back(fallback_location: root_path)
   end
 end
