@@ -18,9 +18,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
+Ruby: 2.7.0
 Rails: 5.2.3
 Postgres: >=9.5
+Rspec: >=4.1
 
 ### Setup
 

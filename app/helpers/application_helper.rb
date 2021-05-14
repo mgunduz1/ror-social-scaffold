@@ -15,4 +15,45 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def add_or_cancel_friend_request(user)
+    @check = Friendship.where(user_id: user.id).where(friend_id: current_user.id).first
+    return unless user.id != current_user.id && !@friends && !@check && !user.friends.include?(current_user)
+
+    friend = Friendship.where(user_id: current_user.id).where(friend_id: user.id).where(confirmed: nil).first
+    if friend
+      link_to('Cancel request', friendship_path(friend), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete)
+
+    else
+      link_to('Add friend', friendships_path(user), class: 'btn btn-outline-success btn-sm ml-3', method: :post)
+    end
+  end
+
+  def remove_friend(user)
+    friend = Friendship.where(user_id: [current_user.id,
+                                        user.id]).where(friend_id: [current_user.id,
+                                                                    user.id]).where(confirmed: true).first
+
+    link_to('Unfriend', friendship_path(friend), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete) if friend
+  end
+
+  def pending_name(user, name)
+    return unless user.id == current_user.id
+
+    name.name
+  end
+
+  def decline_button(user, current)
+    return unless current_user.id == current.id
+
+    friend = Friendship.where(user_id: user.id).where(friend_id: current_user.id).first
+    link_to('Cancel', friendship_path(friend), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete)
+  end
+
+  def accept_button(user, current)
+    return unless current_user.id == current.id
+
+    friend = Friendship.where(user_id: user.id).where(friend_id: current_user.id).first
+    link_to('Accept', friendship_path(friend), class: 'btn btn-outline-success btn-sm ml-3', method: :patch)
+  end
 end

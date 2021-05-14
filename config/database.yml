@@ -29,10 +29,10 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: ror_social_scaffold
+  username: "postgres"
 
   # The password associated with the postgres role (username).
-  #password:
+  password: 123456
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,6 +58,11 @@ development:
 test:
   <<: *default
   database: ror_social_scaffold_test
+  # the same name as the operating system user that initialized the database.
+  username: "postgres"
+
+  # The password associated with the postgres role (username).
+  password: 123456
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,5 +86,5 @@ test:
 production:
   <<: *default
   database: ror_social_scaffold_production
-  username: ror_social_scaffold
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: <%= ENV['123456'] %>
