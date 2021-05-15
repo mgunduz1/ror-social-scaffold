@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it "There is no user because it is not created yet." do
+    it 'There is no user because it is not created yet.' do
       expect(User.find_by(name: 'something')).to_not eq(@user)
     end
   end
