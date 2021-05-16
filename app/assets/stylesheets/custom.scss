@@ -11,6 +11,11 @@ $divider-color: #bdbdbd;
   padding: 0;
   box-sizing: border-box;
   outline: none;
+
+  ol,
+  ul {
+    padding-left: 1rem;
+  }
 }
 
 body {

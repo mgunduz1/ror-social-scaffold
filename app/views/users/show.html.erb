@@ -1,41 +1,75 @@
 <div class='container-fluid'>
-    <div class='row mx-5 justify-content-center'>
-        <div class='col-7 d-flex flex-column'>
-            <section class="user-section w-100">
-                <div class='row d-flex justify-content-center'>
-                    <h2><%= "Name: #{@user.name}" %></h2>
-                    <%= add_or_cancel_friend_request(@user) %>
+<div class='row mx-5 justify-content-center g-5'>
 
-                </div>
-                <div class='row col-12 d-flex flex-column flex-fill'>
-                    <article class="timeline">
-                        <h3>Recent posts:</h3>
-                        <ul class="posts">
-                            <%= render @posts %>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-        </div>
-        <div class="col-4 d-flex flex-column">
-            <div class='mb-3'>
-                <div>
-                    <h5>Friend requests: </h5>
-                    <% @pending.each do |p| %>
-                    <ul>
-                        <% @new = User.find(p.user_id)%>
-                        <li><%= pending_name(@user,@new) %><%= accept_button(@new,@user)%><%=decline_button(@new,@user)%></li>
-                    </ul>
-                    <% end %>
-                </div>
-            </div>
-            <h5>Friends:</h5>
-            <ul class="users-list">
-                <% @user.friends.each do |friend| %>
-                <li><%= friend.name %><%= remove_friend(friend)%></li>
-                <% end %>
-            </ul>
+<div class='col-7 d-flex flex-column'>
+<section class="user-section w-100">
+<div class='row d-flex justify-content-center'>
+    <h1 class="text-center text-success"><%= @user.name %><span>
+    <% if @user != current_user %>
+    <% unless @acceptreject.nil? %>
+    <%= link_to 'Accept', friendship_path(@acceptreject), class: 'btn btn-outline-success btn-sm ml-3', method: :patch %>
+     <%= link_to 'Reject', friendship_path(@acceptreject), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete %>
+<% end %>
 
-        </div>
+<%= link_to 'Delete Friend', friendship_path(@deletef), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete unless @deletef.nil? %>
+
+<% if @acceptreject.nil? && @deletef.nil? && @cancel.nil? %>
+<%= link_to 'Add friend', friendships_path(@user), class: 'btn btn-outline-success btn-sm ml-3', method: :post %>
+<% end %>
+<%= link_to 'Cancel', friendship_path(@cancel), class: 'btn btn-outline-danger btn-sm ml-3', method: :delete unless @cancel.nil? %>
+<% end %>
+</span>
+</h2>
+</div>
+
+<div class='row col-12 d-flex flex-column flex-fill'>
+    <article class="timeline">
+        <h3>Recent posts:</h3>
+        <ul class="posts">
+            <%= render @posts %>
+        </ul>
+    </article>
+
+
+</div>
+</section>
+</div>
+
+<div class="col-4 d-flex flex-column ">
+<% if @user == current_user %>
+<div class='my-4'>
+<div class="mb-4">
+<h4 class="fw-bold">Sent Friendship Requests</h4>
+<hr class="my-1">
+  <ul>
+  <% @sent.each do |f| %>
+  <li class="my-2"><%= link_to f.friend.name, user_path(f.friend), class:"fs-5 text-success" %>     <%= link_to 'Cancel', friendship_path(f), class: 'btn btn-outline-danger btn-sm', method: :delete %> </li>
+  <% end %>
+</ul>
+</div>
+
+<div>
+<h4 class="fw-bold">Received Friendship Requests</h4>
+<hr class="my-1">
+  <ul>
+  <% @pending.each do |f| %>
+  <li class="my-2"><%= link_to f.user.name, user_path(f.user), class:"fs-6 text-success" %>     <%= link_to 'Accept', friendship_path(f), class: 'btn btn-outline-success btn-sm', method: :patch %>   <%= link_to 'Reject', friendship_path(f), class: 'btn btn-outline-danger btn-sm', method: :delete %></li>
+  <% end %>
+</ul>
+</div>
+</div>
+<% end %>
+
+<div>
+
+<h3 class="fw-bold">Friend list of <%= @user.name %></h3>
+<hr class="my-1">
+  <ul>
+    <% @user.friends.each do |friend| %>
+    <li class="my-2"><%= link_to friend.name, user_path(friend), class:"fs-3 text-success" %><br><span class="text-muted fw-lighter fs-6">Friends since <%= time_ago_in_words(friend.created_at) %></span> </li>
+    <% end %>
+  </ul>
     </div>
+</div>
+</div>
 </div>
