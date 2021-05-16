@@ -11,8 +11,13 @@ RSpec.describe Friendship, type: :model do
     end
   end
 
-  describe 'active record associations' do
-    it { should belong_to(:user) }
-    it { should belong_to(:friend) }
+  context 'active record associations' do
+    it 'belongs to users' do
+      expect(Friendship.reflect_on_association(:user).macro).to be :belongs_to
+    end
+  
+    it 'belongs to test' do
+      expect(Friendship.reflect_on_association(:friend).macro).to be :belongs_to
+    end
   end
 end

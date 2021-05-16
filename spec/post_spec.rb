@@ -7,9 +7,14 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  context 'active record belongs to' do
+    it 'belongs to users' do
+      expect(Post.reflect_on_association(:user).macro).to be :belongs_to
+    end
+  end
+
   context 'active record associations' do
     it { should have_many(:comments) }
-    it { should belong_to(:user) }
     it { should have_many(:likes) }
   end
 end

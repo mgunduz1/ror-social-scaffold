@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  describe 'active record associations' do
-    it { should belong_to(:post) }
-  end
+  context 'active record associations' do
+    it 'belongs to users' do
+      expect(Like.reflect_on_association(:user).macro).to be :belongs_to
+    end
 
-  describe 'active record associations' do
-    it { should belong_to(:user) }
+    it 'active record associations' do
+      expect(Like.reflect_on_association(:post).macro).to be :belongs_to
+    end
   end
 end
