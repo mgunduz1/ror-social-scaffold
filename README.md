@@ -1,16 +1,17 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in Touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes intial code for social media app with basic styling. We implemeted our own Friendship model to invite friends.
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
+- PostgreSQL
+- Heroku
 
 ## Live Demo
 
-TBA
-
+[Live demo](https://quiet-beach-20671.herokuapp.com/)
 
 ## Getting Started
 
@@ -18,67 +19,53 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.7.0
-Rails: 5.2.3
-Postgres: >=9.5
-Rspec: >=4.1
+Ruby: 2.6.3  
+Rails: 5.2.3  
+Postgres: >=9.5  
+Rspec gem
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
-bundle install
+$ bundle install
 ```
 
 Setup database with:
 
 ```
-   rails db:create
-   rails db:migrate
+$ rails db:create
+$ rails db:migrate
 ```
 
-### Github Actions
+## Rspec testing
 
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
+> To test all models, write the following in your terminal:
 
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
+```
+$ rspec
+```
 
-
-### Usage
+## Usage
 
 Start server with:
 
 ```
-    rails server
+$ rails server
 ```
 
 Open `http://localhost:3000/` in your browser.
 
-### Run tests
+**Mert Gunduz**
 
-```
-    rpsec --format documentation
-```
+- Github: [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mgunduz1)
+- Linkedin: [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mertgunduz1/)
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+**Marko Zecevic**
 
-### Deployment
-
-TBA
-
-## Authors
-
-TBA
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+- Github: [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MarkoNS1990)
+- Linkedin: [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/zecevicmarko/)
 
 ## Show your support
 
@@ -86,9 +73,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
-
+- Hat tip to anyone whose code was used.
+- Inspiration
+- etc
