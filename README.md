@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-[Live demo](https://quiet-beach-20671.herokuapp.com/)
+[Live demo](https://whispering-fortress-04092.herokuapp.com/)
 
 ## Getting Started
 
