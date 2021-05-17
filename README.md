@@ -12,6 +12,8 @@
 ## Live Demo
 
 [Live demo](https://whispering-fortress-04092.herokuapp.com/)
+^^^^^^^
+THIS IS THE HEROKU LINK
 
 ## Getting Started
 
@@ -41,7 +43,7 @@ $ rails db:migrate
 
 ## Rspec testing
 
-> To test all models, write the following in your terminal:
+> To test write the following in your terminal:
 
 ```
 $ rspec
