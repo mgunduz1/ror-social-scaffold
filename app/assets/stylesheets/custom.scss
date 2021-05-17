@@ -11,6 +11,11 @@ $divider-color: #bdbdbd;
   padding: 0;
   box-sizing: border-box;
   outline: none;
+
+  ol,
+  ul {
+    padding-left: 1rem;
+  }
 }
 
 body {
@@ -250,8 +255,8 @@ form {
 
   .post-comments-section {
     margin: 5px;
-    width: 90%;
-    margin-left: 10%;
+    width: 95%;
+    margin-left: 5%;
 
     .post-comments {
       position: relative;
