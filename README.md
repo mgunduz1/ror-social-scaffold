@@ -12,7 +12,7 @@
 ## Live Demo
 
 [Live demo](https://whispering-fortress-04092.herokuapp.com/)
-^^^^^^^
+<< ---
 THIS IS THE HEROKU LINK
 
 ## Getting Started
